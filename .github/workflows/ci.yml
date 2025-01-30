@@ -18,13 +18,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Update to version 16 or 18
+          node-version: '16'  # Ensure Node.js version 16
 
       - name: Install dependencies
         run: npm install
 
+      - name: Fix permissions for ESLint binary
+        run: chmod +x node_modules/.bin/eslint
+
       - name: Run ESLint
-        run: npx eslint .
+        run: npx eslint .  # Run ESLint with npx
 
   test:
     runs-on: ubuntu-latest
@@ -36,7 +39,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Update to version 16 or 18
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
