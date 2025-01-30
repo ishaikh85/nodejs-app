@@ -9,11 +9,15 @@ export default [
       sourceType: "module", // Allows usage of import/export
       ecmaVersion: 2021, // Enable ES2021 features like structuredClone
     },
+    rules: {
+      // Disable the constructor-super rule to avoid issues with it
+      "constructor-super": "off",
+    },
   },
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: globals.browser, // Global browser variables
     },
   },
-  pluginJs.configs.recommended,
+  pluginJs.configs.recommended, // Recommended ESLint settings
 ];
