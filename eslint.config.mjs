@@ -10,14 +10,15 @@ export default [
       ecmaVersion: 2021, // Enable ES2021 features like structuredClone
     },
     rules: {
-      // Explicitly disable constructor-super rule
-      "constructor-super": "off",
-      // You can disable other specific rules if needed here
+      "constructor-super": "off", // Explicitly turn off constructor-super globally
     },
   },
   {
     languageOptions: {
-      globals: globals.browser, // Add global browser variables here
+      globals: {
+        ...globals.browser, // Include browser globals, ensuring compatibility
+        structuredClone: "readonly", // Add structuredClone explicitly as a global
+      },
     },
   },
   pluginJs.configs.recommended, // Recommended ESLint settings
